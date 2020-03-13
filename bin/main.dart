@@ -70,13 +70,11 @@ int longestStreak(List dates){
 // string "bedbathandbeyond", return either ['bed', 'bath', 'and', 'beyond] or
 // ['bedbath', 'and', 'beyond'].
 List<String>Dictionary(List<String> dictionary,String word){
-
   if(word.isEmpty){
     return [];
   }
   for(int i=1;i<=word.length;i++){
     String testString=word.substring(0,i);
-
     if(dictionary.contains(testString)){
       var result=Dictionary(dictionary, word.substring(i));
       if(result!=null){
@@ -84,42 +82,73 @@ List<String>Dictionary(List<String> dictionary,String word){
       }
     }
   }
-
   return null;
-
 }
 
 
 void main() {
-  print(longestStreak([
-    {
-      "date": "2019-09-18"
-    },
-    {
-      "date": "2019-09-19"
-    },
-    {
-      "date": "2019-09-20"
-    },
-    {
-      "date": "2019-09-26"
-    },
-    {
-      "date": "2019-09-27"
-    },
-    {
-      "date": "2019-09-30"
-    }
-  ]));
-  print(longestStreak([
-    {
-      "date": "2019-09-18"
-    },
+//  print(longestStreak([
+//    {
+//      "date": "2019-09-18"
+//    },
+//    {
+//      "date": "2019-09-19"
+//    },
+//    {
+//      "date": "2019-09-20"
+//    },
+//    {
+//      "date": "2019-09-26"
+//    },
+//    {
+//      "date": "2019-09-27"
+//    },
+//    {
+//      "date": "2019-09-30"
+//    }
+//  ]));
+//  print(longestStreak([
+//    {
+//      "date": "2019-09-18"
+//    },
+//
+//  ]));
+//  print(longestStreak([]));
+// print(Dictionary(['quick', 'brown', 'the', 'fox'],'thequickbrownfox'));
+// print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbathandbeyond'));
+// print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbatandbeyond'));
+// print(Dictionary(['bedbat','bedbath', 'and', 'beyond'],'bedbathandbeyond'));
 
-  ]));
-  print(longestStreak([]));
- print(Dictionary(['quick', 'brown', 'the', 'fox'],'thequickbrownfox'));
- print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbathandbeyond'));
- print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbatandbeyond'));
- print(Dictionary(['bedbat','bedbath', 'and', 'beyond'],'bedbathandbeyond'));
+ // print(findInDictionary(['quick', 'brown', 'the', 'fox'],'thequickbrownfox'));
+  print(findInDictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbathandbeyond'));
+  print(findInDictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbatandbeyond'));
+  print(findInDictionary(['bedbat','bedbath', 'and', 'beyond'],'bedbathandbeyond'));
+}
+List<String>findInDictionary(List<String> dictionary,String word){
+  List<List<String>> finalResult=[];
+  List<List<String>> result=[];
+ for(int i=0;i<dictionary.length;i++){
+   print('searching for ${dictionary[i]}');
+   List<String>temp=[];
+   if(word.startsWith(dictionary[i])){
+     temp.add(dictionary[i]);
+     print('temp=$temp');
+     word=word.replaceRange(0,dictionary[i].length,'');
+     print('word=$word');
+     temp.add(word);
+     print('temp=$temp');
+     result.add(temp);
+     print('result=$result');
+     i=-1;
+   }
+ }
+ List<String> answer=[];
+ for(int i=0;i<result.length;i++){
+   answer.add(result[i][0]);
+ }
+ print('answer=$answer');
+ finalResult.add(answer);
+ print('fianlResult=$finalResult');
+ int totalLength=0;
+ // code not complete
 }
