@@ -126,7 +126,7 @@
 //}
 Dictionary(List<String> dictionary, String text) {
   List<List<String>> list = [];
-  List<List<String>> mainList= [];
+  List<List<String>> mainList = [];
   for (int i = 0; i < dictionary.length; i++) {
     if (text.startsWith(dictionary[i])) {
       List<String> temp = [];
@@ -135,66 +135,71 @@ Dictionary(List<String> dictionary, String text) {
       list.add(temp);
     }
   }
- // print(list);
-  mainList=list;
+  mainList = list;
   bool wordFound = false;
   String wordInDictionary;
   for (int i = 0; i < list.length; i++) {
-   // print("Now we are starting with ${list[i]}");
-    while (list[i][list[i].length - 1] != '') {//last element of list
+    while (list[i][list[i].length - 1] != '') {
+      //last element of list
       wordFound = false;
-     // print('last word in list[i]=${list[i][list[i].length - 1]}');
       for (int j = 0; j < dictionary.length; j++) {
-      //  print("Now we are comparing ${dictionary[j]} with ${list[i][list[i].length - 1]}");
         if (list[i][list[i].length - 1].startsWith(dictionary[j])) {
           wordFound = true;
           wordInDictionary = dictionary[j];
         }
       }
       if (wordFound) {
-      //  print('${list[i][list[i].length - 1]}  found in dictionary   }');
         String temp = list[i][list[i].length - 1];
         list[i].removeLast();
         list[i].add(wordInDictionary);
-       // print(list[i]);
         list[i].add(temp.substring(wordInDictionary.length));
-       // print(list[i]);
       }
       if (!wordFound) {
-      //  print('${list[i][list[i].length - 1]} NOT found in dictionary ');
-     //   print('so now the present list is invalid . So it has to be deleted');
-     //   print('list=${list}');
         list[i].add("INVALID");
         break;
-        print('list=${list}');
       }
     }
   }
- // print("FINAL list=${list}");
-  List<List<String>>result=[];
-  for(int i=0;i<list.length;i++){
-    if(!list[i].contains("INVALID")){
+  List<List<String>> result = [];
+  for (int i = 0; i < list.length; i++) {
+    if (!list[i].contains("INVALID")) {
       result.add(list[i]);
     }
-    }
-
-//  print("FINAL list=${result}");
-  if(result.isEmpty){
-    return null;
   }
-  else{
+  if (result.isEmpty) {
+    return null;
+  } else {
     result[0].removeLast();
     return result[0];
   }
 }
 
-
-
 void main() {
-print(Dictionary(['a', 'bc', 'ab'], 'abcabf'));
- print(Dictionary(['a', 'bc', 'ab'], 'abcab'));
-print(Dictionary(['quick', 'brown', 'the', 'fox'],'thequickbrownfox'));
-print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbathandbeyond'));
-print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],'bedbatandbeyond'));
-print(Dictionary(['bedbat','bedbath', 'and', 'beyond'],'bedbathandbeyond'));
+  print(Dictionary(['a', 'bc', 'ab'], 'abcabf'));
+  print(Dictionary(['a', 'bc', 'ab'], 'abcab'));
+  print(Dictionary(['quick', 'brown', 'the', 'fox'], 'thequickbrownfox'));
+  print(Dictionary(
+      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
+  print(Dictionary(
+      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbatandbeyond'));
+  print(Dictionary(['bedbat', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
+  print(Dictionary(["fo", "fox", "isbr", "isbrown", "fox"], 'foxisbrownfox'));
+  print(Dictionary(["a", "ab", "cd"], 'aabcd'));
+  print(Dictionary(["a", "b", "bc", "ab"], 'abcab'));
+  print(Dictionary(['a', 'ab', 'bc', 'd', 'c'], 'cdaabc'));
+  print(Dictionary([
+    "thi",
+    "thisf",
+    "thisfox",
+    "ver",
+    "very",
+    "fo",
+    "fox",
+    "is",
+    "isbr",
+    "isbrown",
+    "this",
+    "very",
+    "brown"
+  ], 'thisfoxisverybrownfox'));
 }
