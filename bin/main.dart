@@ -125,8 +125,8 @@
 //  print(findInDictionary(['bedbat','bedbath', 'and', 'beyond'],'bedbathandbeyond'));
 //}
 Dictionary(List<String> dictionary, String text) {
+  dictionary.sort();
   List<List<String>> list = [];
-  List<List<String>> mainList = [];
   for (int i = 0; i < dictionary.length; i++) {
     if (text.startsWith(dictionary[i])) {
       List<String> temp = [];
@@ -135,12 +135,10 @@ Dictionary(List<String> dictionary, String text) {
       list.add(temp);
     }
   }
-  mainList = list;
   bool wordFound = false;
   String wordInDictionary;
   for (int i = 0; i < list.length; i++) {
     while (list[i][list[i].length - 1] != '') {
-      //last element of list
       wordFound = false;
       for (int j = 0; j < dictionary.length; j++) {
         if (list[i][list[i].length - 1].startsWith(dictionary[j])) {
@@ -175,31 +173,96 @@ Dictionary(List<String> dictionary, String text) {
 }
 
 void main() {
-  print(Dictionary(['a', 'bc', 'ab'], 'abcabf'));
-  print(Dictionary(['a', 'bc', 'ab'], 'abcab'));
-  print(Dictionary(['quick', 'brown', 'the', 'fox'], 'thequickbrownfox'));
+//  print(Dictionary(['a', 'bc', 'ab'], 'abcabf'));
+//  print(Dictionary(['a', 'bc', 'ab'], 'abcab'));
+//  print(Dictionary(['quick', 'brown', 'the', 'fox'], 'thequickbrownfox'));
+//  print(Dictionary(
+//      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
+//  print(Dictionary(
+//      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbatandbeyond'));
+//  print(Dictionary(['bedbat', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
+//  print(Dictionary(["fo", "fox", "isbr", "isbrown", "fox"], 'foxisbrownfox'));
+//  print(Dictionary(["a", "ab", "cd"], 'aabcd'));
+//  print(Dictionary(["a", "b", "bc", "ab"], 'abcab'));
+//  print(Dictionary(['a', 'ab', 'bc', 'd', 'c'], 'cdaabc'));
+//  print(Dictionary([
+//    "thi",
+//    "thisf",
+//    "thisfox",
+//    "ver",
+//    "very",
+//    "fo",
+//    "fox",
+//    "is",
+//    "isbr",
+//    "isbrown",
+//    "this",
+//    "very",
+//    "brown"
+//  ], 'thisfoxisverybrownfox'));
+  print(Dictionary(['a', 'ab', 'abc', 'c', 'def','d','e','f'], 'abcdef'));
+  print(Dictionary(['a', 'ab', 'abc', 'c', 'cd','de','d'], 'abcde'));
+  print("test 1");
+ // print(originalString(['quick', 'brown', 'the', 'fox'], "thequickbrownfox"));
+  print(Dictionary(['quick', 'brown', 'the', 'fox'], "thequickbrownfox"));
+  print("------------");
+  print("test 2");
+//  print(originalString(
+//      ['bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
   print(Dictionary(
-      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
+      ['bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("------------");
+  print("test 3");
+//  print(originalString(['bed', 'bath', 'bedbath', 'and', 'beyond'],
+//      "bedbathandbeyondeverything"));
+  print(Dictionary(['bed', 'bath', 'bedbath', 'and', 'beyond'],
+      "bedbathandbeyondeverything"));
+  print("------------");
+  print("test 4");
+//  print(originalString(['bedbath', 'bed', 'bath', 'bedbath', 'and', 'beyond'],
+//      "bedbathandbeyondeverything"));
+  print(Dictionary(['bedbath', 'bed', 'bath', 'bedbath', 'and', 'beyond'],
+      "bedbathandbeyondeverything"));
+  print("------------");
+  print("test 5");
+//  print(originalString(
+//      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'],
+  //    'thatfoxisthequickbrownfox'));
   print(Dictionary(
-      ['bed', 'bath', 'bedbath', 'and', 'beyond'], 'bedbatandbeyond'));
-  print(Dictionary(['bedbat', 'bedbath', 'and', 'beyond'], 'bedbathandbeyond'));
-  print(Dictionary(["fo", "fox", "isbr", "isbrown", "fox"], 'foxisbrownfox'));
-  print(Dictionary(["a", "ab", "cd"], 'aabcd'));
-  print(Dictionary(["a", "b", "bc", "ab"], 'abcab'));
-  print(Dictionary(['a', 'ab', 'bc', 'd', 'c'], 'cdaabc'));
-  print(Dictionary([
-    "thi",
-    "thisf",
-    "thisfox",
-    "ver",
-    "very",
-    "fo",
-    "fox",
-    "is",
-    "isbr",
-    "isbrown",
-    "this",
-    "very",
-    "brown"
-  ], 'thisfoxisverybrownfox'));
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'],
+      'thatfoxisthequickbrownfox'));
+  print("------------");
+  print("test 6");
+//  print(originalString(
+//      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], 'fox'));
+  print(Dictionary(
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], 'fox'));
+  print("------------");
+  print("test 7");
+//  print(originalString(
+//      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], ''));
+  print(Dictionary(
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], ''));
+  print("------------");
+  print("test 8");
+//  print(originalString(
+//      ['bedb', 'bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print(Dictionary(
+      ['bedb', 'bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("------------");
+  print("test 9");
+//  print(originalString(
+//      ['bedb','bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print(Dictionary(
+      ['bedb','bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("test 10");
+//  print(originalString(
+//      ['be','bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print(Dictionary(
+      ['be','bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("test 11");
+  print(Dictionary(
+      ['bed', 'bat', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+//  print(originalStringWithoutRecur(
+//      ['bed', 'bat', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
 }
